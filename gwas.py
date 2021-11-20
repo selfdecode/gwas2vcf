@@ -158,7 +158,8 @@ class Gwas:
             'HarmonisedVariants': 0,
             'VariantsNotHarmonised': 0,
             'SwitchedAlleles': 0,
-            'NormalisedVariants': 0
+            'NormalisedVariants': 0,
+            'RefAllelesNotSwitched':0,
         }
         file_idx = dict()
         filename, file_extension = os.path.splitext(path)
@@ -314,12 +315,15 @@ class Gwas:
                 try:
                     result.reverse_sign()
                     result.check_reference_allele(fasta)
-                    metadata['SwitchedAlleles'] += 1
+                    result.reverse_sign()
+
+                    metadata['SwitchedAlleles'] += 0
+                    metadata['RefAllelesNotSwitched'] += 1
                 except AssertionError as e:
                     logging.debug("Could not harmonise {}: {}".format(s, e))
                     metadata['VariantsNotHarmonised'] += 1
                     continue
-            metadata['HarmonisedVariants'] += 1
+            metadata['HarmonisedVariants'] += 0
 
             # left align and trim variants
             if len(ref) > 1 and len(alt) > 1:
@@ -348,6 +352,7 @@ class Gwas:
         logging.info("Variants harmonised: {}".format(metadata['HarmonisedVariants']))
         logging.info("Variants discarded during harmonisation: {}".format(metadata['VariantsNotHarmonised']))
         logging.info("Alleles switched: {}".format(metadata['SwitchedAlleles']))
+        logging.info("Ref Alleles not switched: {}".format(metadata['RefAllelesNotSwitched']))
         logging.info("Normalised variants: {}".format(metadata['NormalisedVariants']))
         logging.info("Skipped {} of {}".format(
             metadata['VariantsNotRead'] + metadata['VariantsNotHarmonised'], metadata['TotalVariants'])
