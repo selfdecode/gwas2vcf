@@ -4,4 +4,4 @@ pysam==0.15.4
 marshmallow==2.18.1
 numpy==1.15.4
 Cython==0.29.17
-git+git://github.com/bioinformed/vgraph@v1.4.0#egg=vgraph
+git+https://github.com/selfdecode/vgraph.git@v1.4.0#egg=vgraph
