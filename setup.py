@@ -15,7 +15,7 @@ install_requires = [
     "pysam==0.15.4",
     "biopython==1.72",
     "marshmallow==2.18.1",
-    "numpy==1.22.0",
+    "numpy==1.26.0",
     "vgraph @ git+https://github.com/selfdecode/vgraph.git@v1.4.0#egg=vgraph",
 ]
 setup_requires = ["setuptools_scm==1.15.0", "setuptools_scm_git_archive==1.0"]
