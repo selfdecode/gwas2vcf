@@ -19,7 +19,7 @@ install_requires = [
     "vgraph @ git+https://github.com/selfdecode/vgraph.git@v1.4.0#egg=vgraph",
 ]
 setup_requires = ["setuptools_scm==1.15.0", "setuptools_scm_git_archive==1.0"]
-tests_require = ["pytest==5.3.5"]
+tests_require = ["pytest==9.0.3"]
 
 classifiers = """
 Development Status :: 2 - Alpha
